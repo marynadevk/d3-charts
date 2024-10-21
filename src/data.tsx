@@ -26,3 +26,16 @@ export const storeAssortment = [
   { label: 'Bananas', value: 55 },
   { label: 'Grapes', value: 60 },
 ];
+
+export const mockData = [
+  { state: 'California', frequency: 120 },
+  { state: 'Texas', frequency: 100 },
+  { state: 'New York', frequency: 80 },
+  { state: 'Florida', frequency: 60 },
+  { state: 'Illinois', frequency: 50 },
+  { state: 'Ohio', frequency: 40 },
+  { state: 'Pennsylvania', frequency: 30 },
+  { state: 'Washington', frequency: 20 },
+  { state: 'Colorado', frequency: 15 },
+  { state: 'Oregon', frequency: 10 },
+];

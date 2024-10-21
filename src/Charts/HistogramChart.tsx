@@ -1,5 +1,6 @@
 import * as d3 from 'd3';
 import { FC, useEffect, useState } from 'react';
+import { mockData } from '../data';
 
 type StateFrequency = {
   state: string;
@@ -12,35 +13,17 @@ type Props = {
 };
 
 export const HistogramChart: FC<Props> = ({ width, height }) => {
-  const jsonURL = 'https://api.openbrewerydb.org/breweries';
   const [data, setData] = useState<StateFrequency[]>([]);
+
+  useEffect(() => {
+    setData(mockData.sort((a, b) => b.frequency - a.frequency));
+  }, []);
 
   useEffect(() => {
     if (data.length > 0) {
       drawChart();
-    } else {
-      getURLData();
     }
   }, [data]);
-
-  const getURLData = async () => {
-    const urlResponse = await fetch(jsonURL);
-    const jsonResult = await urlResponse.json();
-
-    const stateFreq: { [key: string]: number } = {};
-    jsonResult.forEach((element: any) => {
-      stateFreq[element.state] = (stateFreq[element.state] || 0) + 1;
-    });
-
-    const stateFreqArray: StateFrequency[] = Object.keys(stateFreq).map(
-      (key) => ({
-        state: key,
-        frequency: stateFreq[key],
-      })
-    );
-
-    setData(stateFreqArray.sort((a, b) => b.frequency - a.frequency));
-  };
 
   const drawChart = () => {
     const margin = { top: 50, right: 30, bottom: 70, left: 50 };
