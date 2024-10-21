@@ -1,24 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { BarChart } from './Charts/BarChart';
+import { HistogramChart } from './Charts/HistogramChart';
+import { LineChart } from './Charts/LineChart';
+import { ScatterPlotChart } from './Charts/ScatterPlotChart';
+import { TimeSeriesChart } from './Charts/TimeSeriesChart';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1>React + D3 Charts</h1>
       </header>
+      <main>
+        <BarChart width={800} height={500} />
+        <HistogramChart width={800} height={500} />
+        <TimeSeriesChart width={800} height={500} />
+        <LineChart width={800} height={500} />
+        <ScatterPlotChart width={800} height={500} />
+      </main>
     </div>
   );
 }
